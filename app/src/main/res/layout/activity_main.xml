@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <Button
+        android:id="@+id/record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nagraj" />
+    <Button
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Odtwórz"
+        android:layout_toRightOf="@id/record" />
+    <Button
+        android:id="@+id/playHLS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PlayHLS"
+        android:layout_below="@id/play" />
+    <Button
+        android:id="@+id/playHLS2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PlayHLS2"
+        android:layout_toRightOf="@id/playHLS"
+        android:layout_below="@id/play" />
+    <Button
+        android:id="@+id/stream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stream Camera"
+        android:layout_toRightOf="@id/play" />
+</RelativeLayout>
