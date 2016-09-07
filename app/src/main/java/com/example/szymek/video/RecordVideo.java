@@ -51,6 +51,13 @@ public class RecordVideo extends Activity implements SurfaceHolder.Callback {
             }
         });
     }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        finish();
+    }
+
     @Override
     protected void onDestroy(){
         super.onDestroy();
@@ -65,7 +72,6 @@ public class RecordVideo extends Activity implements SurfaceHolder.Callback {
         isInitialized = true;
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.CAMCORDER);
         mediaRecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
-
         mediaRecorder.setProfile(CamcorderProfile.get(CamcorderProfile.QUALITY_HIGH));
         mediaRecorder.setOutputFile(MainActivity.VIDEOPAHT + "/" + MainActivity.VIDEONAME);
         mediaRecorder.setPreviewDisplay(surfaceHolder.getSurface());
@@ -95,6 +101,7 @@ public class RecordVideo extends Activity implements SurfaceHolder.Callback {
             isRecording = false;
         }
     }
+
     public void Clear(){
         if(isInitialized) {
             if (isRecording) {
@@ -102,16 +109,15 @@ public class RecordVideo extends Activity implements SurfaceHolder.Callback {
             }
             mediaRecorder.reset();
             mediaRecorder.release();
-            if(!isPrepared){
-                ///Prepare fails -> camera.lock()
-                camera.lock();
-            }
-            camera.stopPreview();
-            camera.release();
             isRecording = false;
             isInitialized =false;
             isPrepared = false;
         }
+        camera.lock();
+        camera.stopPreview();
+        surfaceHolder.removeCallback(this);
+        camera.release();
+        camera = null;
     }
 
     @Override

@@ -20,10 +20,10 @@
         android:text="PlayHLS"
         android:layout_below="@id/play" />
     <Button
-        android:id="@+id/playHLS2"
+        android:id="@+id/playStream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PlayHLS2"
+        android:text="Play Stream"
         android:layout_toRightOf="@id/playHLS"
         android:layout_below="@id/play" />
     <Button

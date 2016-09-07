@@ -91,25 +91,25 @@ public class StreamVideo extends Activity implements SurfaceHolder.Callback, Cam
             }
         });
     }
+    @Override
+    protected  void onStop(){
+        super.onStop();
+        finish();
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (isStreaming) {
-            try {
-                recorder.stop();
-                isStreaming = false;
-                recorder.release();
-            } catch (FFmpegFrameRecorder.Exception e) {
-                e.printStackTrace();
-            }
-            camera.stopPreview();
-            camera.setPreviewCallback(null);
-            camera.release();
-            camera = null;
-        }
+        Clear();
     }
 
+    private void Clear(){
+        StopStreaming();
+        camera.stopPreview();
+        camera.setPreviewCallback(null);
+        camera.release();
+        camera = null;
+    }
     private void StopStreaming() {
         streamButton.setBackgroundResource(R.mipmap.record);
         if (isStreaming) {
